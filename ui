@@ -1,0 +1,63 @@
+local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "鸭hub",
+    Text = "正在加载（反挂机已开启）",
+    Duration = 5, 
+})
+print("反挂机开启")
+		local vu = game:GetService("VirtualUser")
+		game:GetService("Players").LocalPlayer.Idled:connect(function()
+		   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		   wait(1)
+		   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		end)
+local OrionLib = loadstring(game:HttpGet('https://pastebin.com/raw/SePpsSPZ'))()
+local Window = OrionLib:MakeWindow({Name = "鸭hub", HidePremium = false, SaveConfig = true,IntroText = "欢迎使用鸭hub", ConfigFolder = "欢迎使用鸭hub"})
+local about = Window:MakeTab({
+    Name = "鸭Hub V2",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+about:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
+about:AddParagraph("您的注入器:"," "..identifyexecutor().."")
+about:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
+about:AddParagraph("致歉：鸭hub在前段时间因为种种原因停止更新，今天起鸭hub恢复更新")
+local Tab = Window:MakeTab({
+  Name = "通用脚本",
+  Icon = "rbxassetid://4483345998",
+  PremiumOnly = false
+  })
+  
+ Tab:AddButton({
+	Name = "飞行",
+	Callback = function()
+local function JJCG_fake_script() -- Andres.Script 
+	local script = Instance.new('Script', Andres)
+
+	function click()
+		function exPro(root)
+			for _, v in pairs(root:GetChildren()) do
+				if v:IsA("ParticleEmitter") and v.Texture ~= "http://www.roblox.com/asset/?id=822155988" then
+					v.Parent = nil
+				elseif v:IsA("BasePart") then
+					local One = Instance.new("ParticleEmitter", v)
+					One.Texture = "http://www.roblox.com/asset/?id=822155988"
+				end
+				exPro(v)
+			end
+		end
+		function asdf(root)
+			for _, v in pairs(root:GetChildren()) do
+				asdf(v)
+			end
+		end
+		exPro(game.Workspace)
+		asdf(game.Workspace)
+	end
+	
+	script.Parent.MouseButton1Down:connect(click)
+end
+end
+})
