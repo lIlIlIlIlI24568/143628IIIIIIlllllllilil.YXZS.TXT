@@ -2032,21 +2032,21 @@ task.spawn(function()
 	end;
 end);
 local ListF = {
-	"Normal",
-	"Auto Quest",
-	"Nearest"
+	"正常”，
+	“自动任务”， 
+	"最近的"
 };
-FarmMode = "Normal";
-MainTab:Dropdown("Farm Mode", ListF, FarmMode, function(value)
+FarmMode = "正常";
+MainTab:Dropdown("模式选择", ListF, FarmMode, function(value)
 	FarmMode = value;
 end);
-MainTab:Toggle("Start Auto Farm", _G.AutoFarm, "Auto Farm Selected Mode", function(value)
+MainTab:Toggle("自动接任务", _G.AutoFarm, "自动接任务模式", function(value)
 	_G.AutoFarm = value;
 	StopTween(_G.AutoFarm);
 end);
 spawn(function()
 	while wait() do
-		if FarmMode == "Normal" and _G.AutoFarm then
+		if FarmMode == "正常" and _G.AutoFarm then
 			pcall(function()
 				CheckQuest();
 				local QuestTitle = (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text;
@@ -2102,7 +2102,7 @@ spawn(function()
 end);
 spawn(function()
 	while wait() do
-		if FarmMode == "Nearest" and _G.AutoFarm then
+		if FarmMode == "正常" and _G.AutoFarm then
 			pcall(function()
 				for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
@@ -2135,7 +2135,7 @@ spawn(function()
 end);
 spawn(function()
 	while wait() do
-		if FarmMode == "Auto Quest" and _G.AutoFarm then
+		if FarmMode == "自动接任务" and _G.AutoFarm then
 			pcall(function()
 				CheckQuest();
 				local QuestTitle = (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text;
@@ -2188,7 +2188,7 @@ spawn(function()
 	end;
 end);
 if World1 then
-	MainTab:Toggle("Auto Farm Fast", _G.AutoFarmFast, "Farm Sky Lv.10-75", function(value)
+	MainTab:Toggle("快速接任务", _G.AutoFarmFast, "快速推荐 Lv.10-75", function(value)
 		_G.Farmfast = value;
 		StopTween(_G.Farmfast);
 	end);
