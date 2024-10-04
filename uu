@@ -1,6 +1,6 @@
 local Update = (loadstring(game:HttpGet("https://roblox.relzscript.xyz/source/relzhub/library/pc.lua")))();
 local Alert = (loadstring(game:HttpGet("https://roblox.relzscript.xyz/source/relzhub/library/alert.lua")))();
-local Library = Update:Window("Blox Fruits");
+local Library = Update:Window("xgo 超可爱水果战场");
 local MainTab = Library:Tab("主要", "rbxassetid://10723407389");
 local SettingsTab = Library:Tab("设置", "rbxassetid://10734950309");
 local HoldTab = Library:Tab("技能", "rbxassetid://10734984606");
