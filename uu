@@ -2046,7 +2046,7 @@ MainTab:Toggle("自动接任务", _G.AutoFarm, "自动接任务模式", function
 end);
 spawn(function()
 	while wait() do
-		if FarmMode == "Normal" and _G.AutoFarm then
+		if FarmMode == "正常" and _G.AutoFarm then
 			pcall(function()
 				CheckQuest();
 				local QuestTitle = (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text;
@@ -2102,7 +2102,7 @@ spawn(function()
 end);
 spawn(function()
 	while wait() do
-		if FarmMode == "Nearest" and _G.AutoFarm then
+		if FarmMode == "最近的" and _G.AutoFarm then
 			pcall(function()
 				for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
@@ -2135,7 +2135,7 @@ spawn(function()
 end);
 spawn(function()
 	while wait() do
-		if FarmMode == "Auto Quest" and _G.AutoFarm then
+		if FarmMode == "自动任务" and _G.AutoFarm then
 			pcall(function()
 				CheckQuest();
 				local QuestTitle = (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text;
