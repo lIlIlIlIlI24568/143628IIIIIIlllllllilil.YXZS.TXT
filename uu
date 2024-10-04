@@ -1946,7 +1946,7 @@ function UpdateTime()
 	local Hour = math.floor(GameTime / 60 ^ 2) % 24;
 	local Minute = math.floor(GameTime / 60 ^ 1) % 60;
 	local Second = math.floor(GameTime / 60 ^ 0) % 60;
-	Time:Set("[时间] : Hours : " .. Hour .. " Min : " .. Minute .. " Sec : " .. Second);
+	Time:Set("[游戏时长] : 时 : " .. Hour .. " 分 : " .. Minute .. " 秒 : " .. Second);
 end;
 spawn(function()
 	while task.wait() do
@@ -1977,19 +1977,19 @@ spawn(function()
 		UpdateClient1();
 	end;
 end);
-MainTab:Label("xgo 超可爱");
-MainTab:Button("复制xgo qq", function()
+MainTab:Label("xgo 超可爱   ᴵˈᵐ ᵒᵏ(ᵕ̣̣̣̣̣ ͜ ᵕ̣̣̣̣̣ ˶ )♡ л̵ ");
+MainTab:Button("复制xgo QQ", function()
 	setclipboard("3795512080");
 end);
-MainTab:Seperator("Level Farm");
+MainTab:Seperator("自动 武器");
 local WeaponList = {
-	"Melee",
-	"Sword",
-	"Fruit",
-	"Gun"
+	"近战",
+	"剑",
+	"水果",
+	"枪"
 };
-_G.SelectWeapon = "Melee";
-MainTab:Dropdown("Select Weapon", WeaponList, _G.SelectWeapon, function(value)
+_G.SelectWeapon = "近战";
+MainTab:Dropdown("选择武器", WeaponList, _G.SelectWeapon, function(value)
 	_G.SelectWeapon = value;
 end);
 task.spawn(function()
