@@ -2032,8 +2032,8 @@ task.spawn(function()
 	end;
 end);
 local ListF = {
-	"正常”，
-	“自动任务”， 
+	"正常”,
+	“自动任务”,
 	"最近的"
 };
 FarmMode = "正常";
