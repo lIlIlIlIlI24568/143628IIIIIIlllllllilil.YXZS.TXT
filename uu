@@ -1939,14 +1939,14 @@ end);
 	wait(1);
 	(game:GetService("VirtualUser")):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame);
 end);
-MainTab:Seperator("Main");
+MainTab:Seperator("主要");
 Time = MainTab:Label("Executor Time");
 function UpdateTime()
 	local GameTime = math.floor(workspace.DistributedGameTime + 0.5);
 	local Hour = math.floor(GameTime / 60 ^ 2) % 24;
 	local Minute = math.floor(GameTime / 60 ^ 1) % 60;
 	local Second = math.floor(GameTime / 60 ^ 0) % 60;
-	Time:Set("[GameTime] : Hours : " .. Hour .. " Min : " .. Minute .. " Sec : " .. Second);
+	Time:Set("[时间] : Hours : " .. Hour .. " Min : " .. Minute .. " Sec : " .. Second);
 end;
 spawn(function()
 	while task.wait() do
@@ -1958,7 +1958,7 @@ end);
 Client = MainTab:Label("Client");
 function UpdateClient()
 	local Fps = workspace:GetRealPhysicsFPS();
-	Client:Set("[Fps] : " .. Fps);
+	Client:Set("[帧率] : " .. Fps);
 end;
 spawn(function()
 	while true do
@@ -1969,7 +1969,7 @@ end);
 Client1 = MainTab:Label("Client");
 function UpdateClient1()
 	local Ping = (game:GetService("Stats")).Network.ServerStatsItem["Data Ping"]:GetValueString();
-	Client1:Set("[Ping] : " .. Ping);
+	Client1:Set("[Cpu] : " .. Ping);
 end;
 spawn(function()
 	while true do
@@ -1977,9 +1977,9 @@ spawn(function()
 		UpdateClient1();
 	end;
 end);
-MainTab:Label("Script By RelzBlox#6078");
-MainTab:Button("Copy Discord Link", function()
-	setclipboard("https://discord.com/invite/ba2jasaKn2");
+MainTab:Label("xgo 超可爱");
+MainTab:Button("复制xgo qq", function()
+	setclipboard("3795512080");
 end);
 MainTab:Seperator("Level Farm");
 local WeaponList = {
