@@ -1995,33 +1995,33 @@ end);
 task.spawn(function()
 	while wait() do
 		pcall(function()
-			if _G.SelectWeapon == "Melee" then
+			if _G.SelectWeapon == "近战" then
 				for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-					if v.ToolTip == "Melee" then
+					if v.ToolTip == "近战" then
 						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
 							_G.SelectWeapon = v.Name;
 						end;
 					end;
 				end;
-			elseif _G.SelectWeapon == "Sword" then
+			elseif _G.SelectWeapon == "剑" then
 				for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-					if v.ToolTip == "Sword" then
+					if v.ToolTip == "剑" then
 						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
 							_G.SelectWeapon = v.Name;
 						end;
 					end;
 				end;
-			elseif _G.SelectWeapon == "Gun" then
+			elseif _G.SelectWeapon == "枪" then
 				for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-					if v.ToolTip == "Gun" then
+					if v.ToolTip == "枪" then
 						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
 							_G.SelectWeapon = v.Name;
 						end;
 					end;
 				end;
-			elseif _G.SelectWeapon == "Fruit" then
+			elseif _G.SelectWeapon == "水果" then
 				for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-					if v.ToolTip == "Blox Fruit" then
+					if v.ToolTip == "水果" then
 						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
 							_G.SelectWeapon = v.Name;
 						end;
