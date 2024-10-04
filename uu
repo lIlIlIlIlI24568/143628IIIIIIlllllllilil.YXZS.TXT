@@ -1,21 +1,21 @@
 local Update = (loadstring(game:HttpGet("https://roblox.relzscript.xyz/source/relzhub/library/pc.lua")))();
 local Alert = (loadstring(game:HttpGet("https://roblox.relzscript.xyz/source/relzhub/library/alert.lua")))();
 local Library = Update:Window("Blox Fruits");
-local MainTab = Library:Tab("Main", "rbxassetid://10723407389");
-local SettingsTab = Library:Tab("Setting", "rbxassetid://10734950309");
-local HoldTab = Library:Tab("Hold Skill", "rbxassetid://10734984606");
-local ItemsTab = Library:Tab("Items", "rbxassetid://10723405360");
-local SeaTab = Library:Tab("Sea", "rbxassetid://10709761530");
-local StatsTab = Library:Tab("Stats", "rbxassetid://10709770317");
-local RaceV4Tab = Library:Tab("Race", "rbxassetid://10747372167");
-local CombatTab = Library:Tab("Combat", "rbxassetid://10734975486");
-local RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
-local EspTab = Library:Tab("Esp", "rbxassetid://10723346959");
-local TeleportTab = Library:Tab("Teleport", "rbxassetid://10723434557");
-local ShopTab = Library:Tab("Shop", "rbxassetid://10734952479");
-local FruitTab = Library:Tab("Devil Fruit", "rbxassetid://10709761889");
-local MiscTab = Library:Tab("Misc", "rbxassetid://10723424838");
-local ServTab = Library:Tab("Serv", "rbxassetid://10723426722");
+local MainTab = Library:Tab("主要", "rbxassetid://10723407389");
+local SettingsTab = Library:Tab("设置", "rbxassetid://10734950309");
+local HoldTab = Library:Tab("技能", "rbxassetid://10734984606");
+local ItemsTab = Library:Tab("项目", "rbxassetid://10723405360");
+local SeaTab = Library:Tab(" 海", "rbxassetid://10709761530");
+local StatsTab = Library:Tab("统计数据", "rbxassetid://10709770317");
+local RaceV4Tab = Library:Tab("人种", "rbxassetid://10747372167");
+local CombatTab = Library:Tab("战斗", "rbxassetid://10734975486");
+local RaidTab = Library:Tab("搜捕", "rbxassetid://10723345749");
+local EspTab = Library:Tab("透视", "rbxassetid://10723346959");
+local TeleportTab = Library:Tab("传送", "rbxassetid://10723434557");
+local ShopTab = Library:Tab("商店", "rbxassetid://10734952479");
+local FruitTab = Library:Tab("恶魔果实", "rbxassetid://10709761889");
+local MiscTab = Library:Tab("其他", "rbxassetid://10723424838");
+local ServTab = Library:Tab("服务器", "rbxassetid://10723426722");
 if game.PlaceId == 2753915549 then
 	World1 = true;
 elseif game.PlaceId == 4442272183 then
