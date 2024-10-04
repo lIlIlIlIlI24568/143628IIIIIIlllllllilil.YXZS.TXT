@@ -153,7 +153,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
-    Title = "xgo 汉化战争大亨",
+    Title = "War Tycoon",
     SubTitle = "Made with love by awakenkn",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
@@ -168,14 +168,14 @@ local Tabs = {
 local Options = Fluent.Options
 do
 ---------------------------FARM TAB---------------------------------------
-local antiafk = Tabs.Farm:AddToggle("antiafk", {Title = "反afk", Default = false })
+local antiafk = Tabs.Farm:AddToggle("antiafk", {Title = "反-Afk", Default = false })
 antiafk:OnChanged(function(value)
     getgenv().antiafk = value
     while getgenv().antiafk do task.wait()
         game:GetService("VirtualUser"):ClickButton1(Vector2.new(710,534,0))
     end
 end)
-local AutoPlay = Tabs.Farm:AddToggle("AutoPlay", {Title = "[自动播放]: 自动-玩", Default = false })
+local AutoPlay = Tabs.Farm:AddToggle("AutoPlay", {Title = "[功能函数]: 自动播放", Default = false })
 AutoPlay:OnChanged(function(value)
     getgenv().AutoPlay = value
     while getgenv().AutoPlay do task.wait()
@@ -277,12 +277,12 @@ autoCollect:OnChanged(function(value)
     end
 end)
 ---------------------------FARM CONFIG TAB---------------------------------------
-local IgnoreRebirthButtons = Tabs.FarmConfig:AddToggle("IgnoreRebirthButtons", {Title = "忽略禁止", Default = false })
+local IgnoreRebirthButtons = Tabs.FarmConfig:AddToggle("IgnoreRebirthButtons", {Title = "Ignore RebirthButtons", Default = false })
 IgnoreRebirthButtons:OnChanged(function(value)
     getgenv().IgnoreRebirthButtons = value
 end)
 local WaitAfterCollect = Tabs.FarmConfig:AddInput("WaitAfterCollect", {
-    Title = "等待",
+    Title = "Wait After AutoCollect",
     Default =  getgenv().WaitAfterCollect,
     Placeholder = "1 or 2 or 3",
     Numeric = true, 
@@ -293,13 +293,13 @@ local WaitAfterCollect = Tabs.FarmConfig:AddInput("WaitAfterCollect", {
 })
 WaitAfterCollect:OnChanged(function()
     Fluent:Notify({
-        Title = "觉醒",
-        Content = "按钮按压次数: "..WaitAfterCollect.Value,
+        Title = "awakenkn",
+        Content = "Button Press Ammount: "..WaitAfterCollect.Value,
         Duration = 5
     })
 end)
 local WaitBeforeCollect = Tabs.FarmConfig:AddInput("WaitBeforeCollect", {
-    Title = "自动收集前等待",
+    Title = "Wait Before AutoCollect",
     Default = getgenv().WaitBeforeCollect,
     Placeholder = "1 or 2 or 3",
     Numeric = true, 
@@ -310,13 +310,13 @@ local WaitBeforeCollect = Tabs.FarmConfig:AddInput("WaitBeforeCollect", {
 })
 WaitBeforeCollect:OnChanged(function()
     Fluent:Notify({
-        Title = "觉醒",
-        Content = "自动收集前等待: "..WaitBeforeCollect.Value,
+        Title = "awakenkn",
+        Content = "Wait Before AutoCollect: "..WaitBeforeCollect.Value,
         Duration = 5
     })
 end)
 local ButtonPressAmmount = Tabs.FarmConfig:AddInput("ButtonPressAmmount", {
-    Title = "你按了几个按钮",
+    Title = "How many buttons pressed?",
     Default = getgenv().ButtonPressAmmount,
     Placeholder = "1 or 2 or 3",
     Numeric = true, 
@@ -328,7 +328,7 @@ local ButtonPressAmmount = Tabs.FarmConfig:AddInput("ButtonPressAmmount", {
 ButtonPressAmmount:OnChanged(function()
     Fluent:Notify({
         Title = "awakenkn",
-        Content = "你按了几个按钮: "..ButtonPressAmmount.Value,
+        Content = "How many buttons pressed?: "..ButtonPressAmmount.Value,
         Duration = 5
     })
 end)
