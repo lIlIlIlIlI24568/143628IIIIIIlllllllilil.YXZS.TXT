@@ -1,0 +1,328 @@
+--开源原始原创！VCSK0＃1516学分到Gamerku将脚本信用更新给制拥有eSP脚本的主人的职位
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/gamerku2123/gamerkuepep/refs/heads/main/RoImgui"))();
+local CoreGui = game:GetService("StarterGui")
+local Players = game:GetService("Players")
+
+local function isNumber(str)
+  if tonumber(str) ~= nil or str == 'inf' then
+    return true
+  end
+end
+
+-- 函数显示吐司通知
+Fluent:Notify({
+    Title = "xgo 函数自瞄ui 2.0",
+    Content = "注入!! 享受作弊哈哈",
+    Duration = 8
+})
+
+getgenv().HitboxSize = 15
+getgenv().HitboxTransparency = 0.9
+
+getgenv().HitboxStatus = false
+getgenv().TeamCheck = false
+
+getgenv().Walkspeed = game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed
+getgenv().Jumppower = game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower
+
+getgenv().TPSpeed = 3
+getgenv().TPWalk = false
+
+--// UI
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source/MyUILib(Unamed).lua"))();
+local Window = Library:Create("Hitbox Expander 2.0")
+
+local ToggleGui = Instance.new("ScreenGui")
+local Toggle = Instance.new("TextButton")
+
+ToggleGui.Name = "ToggleGui_HE"
+ToggleGui.Parent = game.CoreGui
+
+Toggle.Name = "xgo"
+Toggle.Parent = ToggleGui
+Toggle.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
+Toggle.BackgroundTransparency = 0.660
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+Toggle.Size = UDim2.new(0.0650164187, 0, 0.0888099447, 0)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "xgo"
+Toggle.TextScaled = true
+Toggle.TextColor3 = Color3.fromRGB(255, 192, 203)
+Toggle.TextSize = 24.000
+Toggle.TextXAlignment = Enum.TextXAlignment.Left
+Toggle.Active = true
+Toggle.Draggable = true
+Toggle.MouseButton1Click:connect(function()
+    Library:ToggleUI()
+end)
+
+local HomeTab = Window:Tab("Home","rbxassetid://10888331510")
+local PlayerTab = Window:Tab("Players","rbxassetid://12296135476")
+local VisualTab = Window:Tab("Visuals","rbxassetid://12308581351")
+local SettingsTab = Window:Tab("Settings","rbxassetid://8092240674")
+
+HomeTab:InfoLabel("只适用于一些游戏！")
+
+--// 吐司功能
+local function ShowToast(title, message)
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = title,
+        Text = message,
+        Duration = 5, 
+    })
+end
+
+--// 什么是新的吐司
+Fluent:Notify({
+    Title = "xgo函数自瞄ui 2.0",
+    Content = "加载！  -  NOCLIP固定，IY添加了",
+    Duration = 8
+})
+
+--// 无限产量
+SettingsTab:Button("无限产量", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+    ShowToast("Hitbox Expander 2.0“，”无限收益注入！")
+end)
+
+HomeTab:Section("主菜单")
+
+HomeTab:Toggle("启用: ", function(state)
+	getgenv().HitboxStatus = state
+    game:GetService('RunService').RenderStepped:connect(function()
+		if HitboxStatus == true and TeamCheck == false then
+			for i,v in next, game:GetService('Players'):GetPlayers() do
+				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+					pcall(function()
+						v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize, HitboxSize, HitboxSize)
+						v.Character.HumanoidRootPart.Transparency = HitboxTransparency
+						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+						v.Character.HumanoidRootPart.Material = "Neon"
+						v.Character.HumanoidRootPart.CanCollide = false
+					end)
+				end
+			end
+		elseif HitboxStatus == true and TeamCheck == true then
+			for i,v in next, game:GetService('Players'):GetPlayers() do
+				if game:GetService('Players').LocalPlayer.Team ~= v.Team then
+					pcall(function()
+						v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize, HitboxSize, HitboxSize)
+						v.Character.HumanoidRootPart.Transparency = HitboxTransparency
+						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+						v.Character.HumanoidRootPart.Material = "Neon"
+						v.Character.HumanoidRootPart.CanCollide = false
+					end)
+				end
+			end
+		else
+		    for i,v in next, game:GetService('Players'):GetPlayers() do
+				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+					pcall(function()
+						v.Character.HumanoidRootPart.Size = Vector3.new(2,2,1)
+						v.Character.HumanoidRootPart.Transparency = 1
+						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Medium stone grey")
+						v.Character.HumanoidRootPart.Material = "Plastic"
+						v.Character.HumanoidRootPart.CanCollide = false
+					end)
+				end
+			end
+		end
+	end)
+end)
+HomeTab:Button("启用Hitbox（范围）", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Rollimonster/Arsenal-Hitbox-Expander/main/Arsenal-Hitbox-Expander"))()
+end)
+HomeTab:TextBox("Hitbox大小", function(value)
+    getgenv().HitboxSize = value
+end)
+
+HomeTab:Toggle("团队检查", function(state)
+    getgenv().TeamCheck = state
+    ESP_SETTINGS.Teamcheck = true
+end)
+
+HomeTab:TextBox("Hitbox透明度", function(number)
+    getgenv().HitboxTransparency = number
+end)
+
+PlayerTab:Section("玩家菜单")
+
+PlayerTab:TextBox("步行速度", function(value)
+    getgenv().Walkspeed = value
+    pcall(function()
+        game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
+    end)
+end)
+
+PlayerTab:Toggle("循环步行速度", function(state)
+    getgenv().loopW = state
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if loopW == true then
+            pcall(function()
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = Walkspeed
+            end)
+        end
+    end)
+end)
+
+PlayerTab:TextBox("跳跃力量", function(value)
+    getgenv().Jumppower = value
+    pcall(function()
+        game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
+    end)
+end)
+
+PlayerTab:Toggle("循环跳跃力量", function(state)
+    getgenv().loopJ = state
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if loopJ == true then
+            pcall(function()
+                game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = Jumppower
+            end)
+        end
+    end)
+end)
+
+PlayerTab:Keybind("Noclip", Enum.KeyCode.N, function()
+    local Noclip = not Noclip
+    local Player = game:GetService("Players").LocalPlayer 
+    
+    if Noclip then 
+        for _,v in pairs(Player.Character:GetDescendants()) do
+	        if v:IsA("BasePart") then
+		        v.CanCollide = false
+	        end
+        end
+    else
+        for _,v in pairs(Player.Character:GetDescendants()) do
+	        if v:IsA("BasePart") then
+		        v.CanCollide = true
+	        end
+        end
+    end
+end) 
+
+PlayerTab:Toggle("Noclip 移动 ", function(state)
+    local Noclip = not Noclip
+    local Player = game:GetService("Players").LocalPlayer 
+    
+    if Noclip then 
+        for _,v in pairs(Player.Character:GetDescendants()) do
+	        if v:IsA("BasePart") then
+		        v.CanCollide = false
+	        end
+        end
+    else
+        for _,v in pairs(Player.Character:GetDescendants()) do
+	        if v:IsA("BasePart") then
+		        v.CanCollide = true
+	        end
+        end
+    end
+end) 
+
+PlayerTab:TextBox("TP速度", function(value)
+getgenv().TPSpeed = value
+end)
+
+PlayerTab:Toggle("TP走路", function(s)
+getgenv().TPWalk = s
+local hb = game:GetService("RunService").Heartbeat
+local player = game:GetService("Players")
+local lplr = player.LocalPlayer
+local chr = lplr.Character
+local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+while getgenv().TPWalk and hb:Wait() and chr and hum and hum.Parent do
+  if hum.MoveDirection.Magnitude > 0 then
+    if getgenv().TPSpeed and isNumber(getgenv().TPSpeed) then
+      chr:TranslateBy(hum.MoveDirection * tonumber(getgenv().TPSpeed))
+    else
+      chr:TranslateBy(hum.MoveDirection)
+    end
+  end
+end
+end)
+
+PlayerTab:Slider("Fov（广角）", game.Workspace.CurrentCamera.FieldOfView,120, function(v)
+     game.Workspace.CurrentCamera.FieldOfView = v
+end)
+
+PlayerTab:Toggle("无限跳跃", function(s)
+getgenv().InfJ = s
+    game:GetService("UserInputService").JumpRequest:connect(function()
+        if InfJ == true then
+            game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+        end
+    end)
+end)
+
+VisualTab:Section("视觉效果")
+
+VisualTab:InfoLabel("等3-10秒")
+
+VisualTab:Toggle("启用esp（透视）", function(state)
+ESP.Enabled = state;
+end)
+
+VisualTab:Toggle("字符亮点", function(state)
+getgenv().enabled = state --Toggle on/off
+getgenv().filluseteamcolor = true --Toggle fill color using player team color on/off
+getgenv().outlineuseteamcolor = true --Toggle outline color using player team color on/off
+getgenv().fillcolor = Color3.new(0, 0, 0) --Change fill color, no need to edit if using team color
+getgenv().outlinecolor = Color3.new(1, 1, 1) --Change outline color, no need to edit if using team color
+getgenv().filltrans = 0.5 --Change fill transparency
+getgenv().outlinetrans = 0.5 --Change outline transparency
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/Highlight-ESP.lua"))()
+end)
+
+if game.PlaceId == 3082002798 then
+    local GamesTab = Window:Tab("Games","rbxassetid://15426471035")
+	GamesTab:InfoLabel("Game: "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
+	GamesTab:Button("No Cooldown", function()
+	    for i, v in pairs(game:GetService('ReplicatedStorage')['Shared_Modules'].Tools:GetDescendants()) do
+		    if v:IsA('ModuleScript') then
+			    local Module = require(v)
+				Module.DEBOUNCE = 0
+			end
+		end
+	end)
+end
+
+
+
+VisualTab:Toggle("Hitbox", function(state)
+ESP.ShowBox = state;
+end)
+
+VisualTab:Toggle("名称", function(state)
+ESP.ShowName = state;
+end)
+
+
+VisualTab:Toggle("Healthbar", function(state)
+ESP.ShowHealth = state;
+end)
+
+VisualTab:Toggle("示踪剂", function(state)
+ESP.ShowTracer = state;
+end)
+
+VisualTab:Toggle("距离", function(state)
+ESP.ShowDistance = state
+end)
+
+PlayerTab:Section("玩家菜单")
+
+SettingsTab:Keybind("切换ui", Enum.KeyCode.F, function()
+    Library:ToggleUI()
+end)
+
+SettingsTab:Button("归队", function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+end)
