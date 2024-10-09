@@ -61,7 +61,7 @@ m:Toggle("自动攻击", false, function (bool)
     end
 end)
 local crate
-m:Dropdown("箱子", {"常见的“,  ”屡见不鲜“,  ”罕见“,  ”史诗"}, function (name)
+m:Dropdown("箱子", {"常见的",  "屡见不鲜",  "罕见",  "史诗"}, function (name)
     if name == "Common" then
         crate = "盒子1"
     elseif name == "Uncommon" then
