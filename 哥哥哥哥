@@ -8,54 +8,7 @@ local window = library:new("小go可怕和躲藏")
 local credits = creds:section("关闭", true)
 credits:Button(        "小go主页",        function()            loadstring(game:HttpGet("https://raw.githubusercontent.com/xgomn/Bhayjkedswfgvxtgjoplkj/refs/heads/main/goto"))()       end)
 
-local creds = window:Tab("Scary Hide & Seek", "6035145364")
+local creds = window:Tab("可怕的躲藏和寻找", "6035145364")
 local bin = creds:section("信息", true)
 
-credits:Button("SpeedHack", false, function (bool)
-    getgenv().settings.speedhack = bool
-    while getgenv().settings.speedhack do
-        local delta = game:GetService("RunService").Heartbeat:Wait()
-        if plr.Character.Humanoid.MoveDirection.Magnitude > 0 then
-            plr.Character:TranslateBy(plr.Character.Humanoid.MoveDirection * 4 * delta * 10)
-        end
-    end
-end)
-credits:Button("Props ESP", false, function (bool)
-    getgenv().settings.props = bool
-    if getgenv().settings.props then
-        while getgenv().settings.props do
-            if characters then
-                for _, player in pairs(characters:GetChildren()) do
-                    if player:GetAttribute("OriginalHipHeight") then
-                        local mObject = player:FindFirstChild("MorphObject")
-                        if mObject and not mObject:FindFirstChild("ESP_Props") then
-                            local highlight = Instance.new("Highlight", mObject)
-                            highlight.Name = "ESP_Props"
-                            highlight.FillColor = Color3.new(0.35, 0.35, 1.000000)
-                            highlight.FillTransparency = 0.6
-                            highlight.OutlineColor = Color3.new(0.000000, 0.000000, 1.000000)
-                        end
-                    end
-                end
-            end
-            wait(1)
-        end
-    else
-        for _, e in pairs(characters:GetDescendants()) do
-            if e:IsA("Highlight") and e.Name == "ESP_Props" then
-                e:Destroy()
-            end
-        end
-    end
-end)
-credits:Button("Auto Attack", false, function (bool)
-    getgenv().settings.attack = bool
-    while getgenv().settings.attack do
-        for _, p in pairs(players:GetPlayers()) do
-            if p ~= plr then
-                game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer("Tool.Hit", p)
-            end
-        end
-        wait()
-    end
-end)
+
