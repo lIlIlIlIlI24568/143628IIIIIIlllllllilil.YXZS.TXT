@@ -1,18 +1,27 @@
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/GTAFAW/neilonmacedo153/refs/heads/main/%E5%BD%A9%E8%99%B9ui"))()
-local m = lib:Window("Scary Hide & Seek")
-local t = lib:Window("Teleports")
-local p = lib:Window("Auto Farm")
-local players = game.Players
-local plr = players.LocalPlayer
-local characters = workspace:FindFirstChild("Characters")
-local map = game.Workspace:FindFirstChild("Map")
-getgenv().settings = {speedhack = false, props = false, players = false, crates = false, attack = false}
-getgenv().play_settings = {props = false, seeker = false, taunt = false}
-local function openCrate(name)
-    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer("Crates.Buy", workspace:FindFirstChild("Crates")[name])    
-end
--- // Main
-m:Toggle("SpeedHack", false, function (bool)
+local window = library:new("小go可怕和躲藏")
+    local creds = window:Tab("关于", "6035145364")
+    local bin = creds:section("信息", true)
+    bin:Label("你的注入器:" .. identifyexecutor())
+    bin:Label("更新9月18日")
+    
+    local credits = creds:section("关闭", true)
+credits:Button("脚本框架变小一点 抱歉暂时无法使用", "", false, function(state)
+        if state then
+        game:GetService("CoreGui")["frosty"].Main.Style = "DropShadow"
+        else
+            game:GetService("CoreGui")["frosty"].Main.Style = "Custom"
+        end
+    end)
+credits:Button(
+        "小go主页",
+        function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/xgomn/Bhayjkedswfgvxtgjoplkj/refs/heads/main/goto"))()
+        end)
+local creds = window:Tab("Scary Hide & Seek", "6035145364")
+local bin = creds:section("信息", true)
+
+credits:Button("SpeedHack", false, function (bool)
     getgenv().settings.speedhack = bool
     while getgenv().settings.speedhack do
         local delta = game:GetService("RunService").Heartbeat:Wait()
@@ -21,7 +30,7 @@ m:Toggle("SpeedHack", false, function (bool)
         end
     end
 end)
-m:Toggle("Props ESP", false, function (bool)
+credits:Button("Props ESP", false, function (bool)
     getgenv().settings.props = bool
     if getgenv().settings.props then
         while getgenv().settings.props do
@@ -49,7 +58,7 @@ m:Toggle("Props ESP", false, function (bool)
         end
     end
 end)
-m:Toggle("Auto Attack", false, function (bool)
+credits:Button("Auto Attack", false, function (bool)
     getgenv().settings.attack = bool
     while getgenv().settings.attack do
         for _, p in pairs(players:GetPlayers()) do
@@ -61,7 +70,7 @@ m:Toggle("Auto Attack", false, function (bool)
     end
 end)
 local crate
-m:Dropdown("Crates", {"Common", "Uncommon", "Rare", "Epic"}, function (name)
+credits:Button("Crates", {"Common", "Uncommon", "Rare", "Epic"}, function (name)
     if name == "Common" then
         crate = "BoxOne"
     elseif name == "Uncommon" then
@@ -72,7 +81,7 @@ m:Dropdown("Crates", {"Common", "Uncommon", "Rare", "Epic"}, function (name)
         crate = "BoxFour"
     end
 end)
-m:Button("Open Crate", function ()
+credits:Button("Open Crate", function ()
     openCrate(crate)
 end)
 m:Toggle("Auto Open", false, function (bool)
@@ -82,18 +91,21 @@ m:Toggle("Auto Open", false, function (bool)
         wait(9)
     end
 end)
-m:Label("~ t.me/arceusxscripts", Color3.fromRGB(127, 143, 166))
-m:Button("Destroy Gui", function ()
+credits:Button("~ t.me/arceusxscripts", Color3.fromRGB(127, 143, 166))
+credits:Button("Destroy Gui", function ()
     for _, s in pairs(getgenv().settings) do
         getgenv().settings[s] = false
     end
     lib:Destroy()
 end)
--- // Teleports
-t:Button("Teleport to Lobby", function()
+
+local creds = window:Tab("Teleports", "6035145364")
+local bin = creds:section("信息", true)
+
+credits:Button("Teleport to Lobby", function()
     plr.Character.HumanoidRootPart.CFrame = CFrame.new(113, 15, 359)
 end)
-t:Button("Teleport to Map", function()
+credits:Button("Teleport to Map", function()
     if map then
         for _, r in pairs(map:GetChildren()) do
             local spawn = r:FindFirstChild("SpawnToMap")
@@ -115,7 +127,7 @@ local function getPlayer(name)
 	end
 end
 local player = nil
-t:Box("Player", function (name, focuslost)
+credits:Button("Player", function (name, focuslost)
     if focuslost then
         local player = getPlayer(name)
         if player then
@@ -123,8 +135,10 @@ t:Box("Player", function (name, focuslost)
         end
     end
 end)
--- // Auto Farm
-p:Toggle("Auto Prop", false, function (bool)
+local creds = window:Tab("Auto Farm", "6035145364")
+local bin = creds:section("信息", true)
+
+credits:Button("Auto Prop", false, function (bool)
     getgenv().play_settings.props = bool
     while getgenv().play_settings.props do
         if plr:GetAttribute("Hider") then
@@ -133,7 +147,7 @@ p:Toggle("Auto Prop", false, function (bool)
         wait(1)
     end
 end)
-p:Toggle("Auto Taunt", false, function (bool)
+credits:Button("Auto Taunt", false, function (bool)
     getgenv().play_settings.taunt = bool
     while getgenv().play_settings.taunt do
         if plr:GetAttribute("Hider") then
@@ -142,7 +156,7 @@ p:Toggle("Auto Taunt", false, function (bool)
         wait(10)
     end
 end)
-p:Toggle("Auto Seeker", false, function (bool)
+credits:Button("Auto Seeker", false, function (bool)
     getgenv().play_settings.seeker = bool
     while getgenv().play_settings.seeker do
         pcall(function ()
@@ -166,8 +180,11 @@ p:Toggle("Auto Seeker", false, function (bool)
         wait(1)
     end
 end)
-p:Button("Anti AFK", function()
+credits:Button("Anti AFK", function()
     for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.Idled)) do
          v:Disable()
     end
  end)
+
+
+
