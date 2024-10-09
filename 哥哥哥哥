@@ -1,17 +1,18 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GTAFAW/neilonmacedo153/refs/heads/main/%E5%BD%A9%E8%99%B9ui", true))()
-local window = library:new("小go可怕的躲藏和寻找")
-local creds = window:Tab("关于", "6035145364")
-    local bin = creds:section("信息", true)
-    bin:Label("你的注入器:" .. identifyexecutor())
-    bin:Label("更新9月18日")
-
-local credits = creds:section("关闭", true)
-credits:Button(        "小go主页",        function()            loadstring(game:HttpGet("https://raw.githubusercontent.com/xgomn/Bhayjkedswfgvxtgjoplkj/refs/heads/main/goto"))()       end)
-
-local creds = window:Tab("主要", "6035145364")
-local bin = creds:section("可怕的躲藏和寻找", true)
-
-credits:Button("速度变快", false, function ()
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Turtle-Brand/Turtle-Lib/main/source.lua"))()
+local m = lib:Window("可怕的隐藏和寻找")
+local t = lib:Window("传送点")
+local p = lib:Window("自动菜单")
+local players = game.Players
+local plr = players.LocalPlayer
+local characters = workspace:FindFirstChild("Characters")
+local map = game.Workspace:FindFirstChild("Map")
+getgenv().settings = {speedhack = false, props = false, players = false, crates = false, attack = false}
+getgenv().play_settings = {props = false, seeker = false, taunt = false}
+local function openCrate(name)
+    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer("Crates.Buy", workspace:FindFirstChild("Crates")[name])    
+end
+-- // Main
+m:Toggle("更快的速度", false, function (bool)
     getgenv().settings.speedhack = bool
     while getgenv().settings.speedhack do
         local delta = game:GetService("RunService").Heartbeat:Wait()
@@ -20,7 +21,7 @@ credits:Button("速度变快", false, function ()
         end
     end
 end)
-credit:Button("透视玩家", false, function ()
+m:Toggle("玩家 ESP", false, function (bool)
     getgenv().settings.props = bool
     if getgenv().settings.props then
         while getgenv().settings.props do
@@ -48,7 +49,7 @@ credit:Button("透视玩家", false, function ()
         end
     end
 end)
-credit:Button("自动攻击", false, function ()
+m:Toggle("自动攻击", false, function (bool)
     getgenv().settings.attack = bool
     while getgenv().settings.attack do
         for _, p in pairs(players:GetPlayers()) do
@@ -59,4 +60,114 @@ credit:Button("自动攻击", false, function ()
         wait()
     end
 end)
-
+local crate
+m:Dropdown("箱子", {"常见的“,”屡见不鲜“,”罕见“,”史诗"}, function (name)
+    if name == "常见的" then
+        crate = "盒子1"
+    elseif name == "屡见不鲜" then
+        crate = "盒子2"
+    elseif name == "罕见" then
+        crate = "盒子3"
+    elseif name == "史诗" then
+        crate = "盒子4"
+    end
+end)
+m:Button("打开箱子", function ()
+    openCrate(crate)
+end)
+m:Toggle("自动打开", false, function (bool)
+    getgenv().settings.crates = bool
+    while getgenv().settings.crates do
+        openCrate(crate)
+        wait(9)
+    end
+end)
+m:Label("~ t.me/arceusxscripts", Color3.fromRGB(127, 143, 166))
+m:Button("摧毁GUI", function ()
+    for _, s in pairs(getgenv().settings) do
+        getgenv().settings[s] = false
+    end
+    lib:Destroy()
+end)
+-- // Teleports
+t:Button("传送到大厅", function()
+    plr.Character.HumanoidRootPart.CFrame = CFrame.new(113, 15, 359)
+end)
+t:Button("传送到地图", function()
+    if map then
+        for _, r in pairs(map:GetChildren()) do
+            local spawn = r:FindFirstChild("SpawnToMap")
+            if spawn then
+                plr.Character.HumanoidRootPart.CFrame = spawn.CFrame + Vector3.new(0,5,0)
+            end
+        end
+    end
+end)
+local function getPlayer(name)
+	local lowerName = string.lower(name)
+	for _, p in pairs(players:GetPlayers()) do
+		local lowerPlayer = string.lower(p.Name)
+		if string.find(lowerPlayer, lowerName) then
+			return p
+		elseif string.find(string.lower(p.DisplayName), lowerName) then
+			return p
+		end
+	end
+end
+local player = nil
+t:Box("玩家", function (name, focuslost)
+    if focuslost then
+        local player = getPlayer(name)
+        if player then
+            plr.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+        end
+    end
+end)
+-- // Auto Farm
+p:Toggle("自动道具", false, function (bool)
+    getgenv().play_settings.props = bool
+    while getgenv().play_settings.props do
+        if plr:GetAttribute("Hider") then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(113, 15, 359)
+        end
+        wait(1)
+    end
+end)
+p:Toggle("自动嘲讽", false, function (bool)
+    getgenv().play_settings.taunt = bool
+    while getgenv().play_settings.taunt do
+        if plr:GetAttribute("Hider") then
+            game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer("Abilities.Fire", "Taunt")            
+        end
+        wait(10)
+    end
+end)
+p:Toggle("自动追求者", false, function (bool)
+    getgenv().play_settings.seeker = bool
+    while getgenv().play_settings.seeker do
+        pcall(function ()
+            if plr:GetAttribute("MainSeeker") or plr:GetAttribute("Seeker") then
+                for _, p in pairs(players:GetPlayers()) do
+                    if p ~= plr then
+                        if p:GetAttribute("Hider") then
+                            repeat
+                                if not getgenv().play_settings.seeker then
+                                    break
+                                end
+                                plr.Character.HumanoidRootPart.CFrame = p.Character.HumanoidRootPart.CFrame
+                                game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer("Tool.Hit", p)
+                                wait(.1)
+                            until p:GetAttribute("Hider") == false
+                        end
+                    end
+                end
+            end
+        end)
+        wait(1)
+    end
+end)
+p:Button("反 AKF", function()
+    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.Idled)) do
+         v:Disable()
+    end
+ end)
