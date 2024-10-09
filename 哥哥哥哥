@@ -4,20 +4,10 @@ local window = library:new("小go可怕和躲藏")
     local bin = creds:section("信息", true)
     bin:Label("你的注入器:" .. identifyexecutor())
     bin:Label("更新9月18日")
-    
+
 local credits = creds:section("关闭", true)
-credits:Button("脚本框架变小一点 抱歉暂时无法使用", "", false, function(state)
-        if state then
-        game:GetService("CoreGui")["frosty"].Main.Style = "DropShadow"
-        else
-            game:GetService("CoreGui")["frosty"].Main.Style = "Custom"
-        end
-    end)
-credits:Button(
-        "小go主页",
-        function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/xgomn/Bhayjkedswfgvxtgjoplkj/refs/heads/main/goto"))()
-        end)
+credits:Button(        "小go主页",        function()            loadstring(game:HttpGet("https://raw.githubusercontent.com/xgomn/Bhayjkedswfgvxtgjoplkj/refs/heads/main/goto"))()       end)
+
 local creds = window:Tab("Scary Hide & Seek", "6035145364")
 local bin = creds:section("信息", true)
 
