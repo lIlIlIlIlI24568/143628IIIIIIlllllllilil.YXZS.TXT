@@ -1,5 +1,5 @@
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Turtle-Brand/Turtle-Lib/main/source.lua"))()
-local m = lib:Window("可怕的隐藏和寻找")
+local m = lib:Window("可怕的隐藏和寻找 xgo汉化")
 local t = lib:Window("传送点")
 local p = lib:Window("自动菜单")
 local players = game.Players
@@ -61,14 +61,14 @@ m:Toggle("自动攻击", false, function (bool)
     end
 end)
 local crate
-m:Dropdown("箱子", {"常见的“,”屡见不鲜“,”罕见“,”史诗"}, function (name)
-    if name == "常见的" then
+m:Dropdown("箱子", {"常见的“,  ”屡见不鲜“,  ”罕见“,  ”史诗"}, function (name)
+    if name == "Common" then
         crate = "盒子1"
-    elseif name == "屡见不鲜" then
+    elseif name == "Uncommon" then
         crate = "盒子2"
-    elseif name == "罕见" then
+    elseif name == "Rare" then
         crate = "盒子3"
-    elseif name == "史诗" then
+    elseif name == "Epic" then
         crate = "盒子4"
     end
 end)
@@ -82,7 +82,7 @@ m:Toggle("自动打开", false, function (bool)
         wait(9)
     end
 end)
-m:Label("~ t.me/arceusxscripts", Color3.fromRGB(127, 143, 166))
+m:Label("加入xgo 259461151", Color3.fromRGB(127, 143, 166))
 m:Button("摧毁GUI", function ()
     for _, s in pairs(getgenv().settings) do
         getgenv().settings[s] = false
